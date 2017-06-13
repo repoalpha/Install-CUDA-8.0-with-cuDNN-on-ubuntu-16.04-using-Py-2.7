@@ -1,5 +1,5 @@
 # This instruction is designed to work with ubuntu 16.04 LTS
-**I hope this instruction can be of help to install CUDA 8.0 using cuDNN 6020 on ubuntu using python 2.7, which is not an easy exercise as compared to using cuDNN 5.1.**
+**I hope this instruction can be of help to users who install CUDA 8.0 using cuDNN 6020 on ubuntu using python 2.7, which is not an easy exercise as compared to installing cuDNN 5.1 at this time.**
 **The backend assumes theano 0.9 and the front end assumes keras**
 
 ### INSTALL SSH OPENSERVER
