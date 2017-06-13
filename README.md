@@ -109,7 +109,7 @@ $ nvidia-smi
 
 ***download the nividia driver 378.13 driver from nividia.com and place it in ~/Downloads***
 
-***make sure you are on the remote machine and ssh'd in - You will definiateley need to ssh in to server as you will lose the GUI completely as local user. You maybe able to get in on the local cmd line using ctrl+alt+f1 but it does not work always, so ssh.***
+***make sure you are on the remote machine and ssh'd in - You will definiateley need to ssh in to the server as you will lose the GUI completely as local user. You maybe able to get in on the local cmd line using ctrl+alt+f1 but it does not work always, so ssh.***
 
 $ sudo service lightdm stop
 
