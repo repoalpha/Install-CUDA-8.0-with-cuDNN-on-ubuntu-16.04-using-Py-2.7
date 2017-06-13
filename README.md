@@ -62,35 +62,6 @@ floatX = float32
 [cuda]
 root = /usr/local/cuda" > ~/.theanorc
 
-### Configure jupyter and prompt for password and remember it!
-
-$ jupyter notebook --generate-config
-
-***make a password***
-
-$ jupass=python -c "from notebook.auth import passwd; print(passwd())"
-$ echo "c.NotebookApp.password = u'"$jupass"'" >> $HOME/.jupyter/jupyter_notebook_config.py
-$ echo "c.NotebookApp.ip = '*'
-$ c.NotebookApp.open_browser = False" >> $HOME/.jupyter/jupyter_notebook_config.py
-
-***we will start Jupyter up as follows on the local and remote machines
-
-***Do this from the Local ( the machine with the GPU running the labs)***
-
-$ jupyter notebook --no-browser --port=8889
-
-***Do this from the remote machine you will need to modify the name and ip address***
-
-$ ssh -N -f -L localhost:8888:localhost:8889 machine name@ipaddress
-
-***if you have used a remote machine before for ssh you will need to get into the localhost file and erase the SHA keys against previously used local machines IP addresses.***
-
-### Next we will need to make some changes to the system to get this to work (this is the departure from the conventional installs you may have seen.
-
-***Close off the session jupyter session on the remote, locate the cmd line window running jupyter and ctrl-c.***
-
-***close-off jupiter on the local machine, ctrl-c.***
-
 ### Download the libgpuarray libraries key to getting this going.
 
 $ git clone https://github.com/Theano/libgpuarray.git1
@@ -121,24 +92,8 @@ $ conda install pygpu
 
 ***It's probably a good time for a reboot so restart the local***
 
-***next restart the local machine jupyter session and remote ssh sessions. I suggest you set up an additional ssh session to the local machine as well as jupyter.***
-
-***on the remote do..***
-
-***ssh your-machine-name@your-ipaddress***
-
-***on the local do...***
-
-$ jupyter notebook --no-browser --port=8889
-
-***Do this from the remote machine, please insert your details your-machine-name@your-ipaddress***
-
-$ ssh -N -f -L localhost:8888:localhost:8889 machine-name@ipaddress
-
-***bring up a http bowser window and put in local machine ipaddress:8889***
-
 $ python
-> import keras
+$>>> import keras
 
 /home/sl/anaconda2/lib/python2.7/site-packages/theano/gpuarray/dnn.py:135: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to version 5.1.
 warnings.warn("Your cuDNN version is more recent than "
@@ -150,27 +105,7 @@ Using Theano backend.
 
 $ nvidia-smi
 
-**Next refinements: this is up to you.**
-
-**Create some aliases so you don't have to re-run long instructions on the local and remote.**
-
-***on local machine running our lab and GPU***
-
-$ echo 'alias ju=‘jupyter notebook —-no-browser —-port=8889’' >> ~/.bashrc
-
-$ source ~/.bashrc
-
-***on remote the alias assuming iMAC or similar you will need to modify the .bash_profile or use nano to get into .bash_profile***
-
-***again this is for apple iMAC as client remote session looking at the GPU server!***
-
-$ echo 'alias remote='ssh -N -f -L localhost:8888:localhost:8889 sl@.localdomain' >> ~/.bash_profile
-
-$ source ~/.bash_profile
-
-**Higher risk activities ahead! -you don't need to do this - lets upgrade to nividia driver 378.13**
-
-***close jupyter notebook on the local as this may cause a crash to lightdm , causing guest login re-cycling if you do not gracefully exit jupyter notebook when rebooting.***
+### Higher risk activities ahead! -you don't need to do this - this section upgrades to nividia driver 378.13
 
 ***download the nividia driver 378.13 driver from nividia.com and place it in ~/Downloads***
 
